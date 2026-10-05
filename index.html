@@ -14,10 +14,9 @@
   The panel stretches to fill whatever space it is given.
   ============================================================
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com"></link>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ki-blue:#0A5A94;      /* Konnect Insights primary */
@@ -53,6 +52,7 @@
   .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
   .tag{display:inline-flex;align-items:center;gap:10px;font-size:clamp(12px,1.6cqw,14px);font-weight:500;color:var(--ki-light)}
   .live-dot{width:9px;height:9px;border-radius:50%;background:var(--amber);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,193,7,.55)}70%{box-shadow:0 0 0 10px rgba(255,193,7,0)}100%{box-shadow:0 0 0 0 rgba(255,193,7,0)}}
   .countdown{display:flex;gap:clamp(10px,1.8cqw,18px)}
   .countdown div{text-align:center;line-height:1}
   .countdown b{display:block;font-size:clamp(18px,3cqw,28px);font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
@@ -82,7 +82,7 @@
     font-size:clamp(13px,min(1.8cqw,2.1cqh),16px);font-weight:500;max-width:92%;min-height:1.6em;
   }
   .caret{display:inline-block;width:2px;height:1em;background:var(--ki-blue);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
-
+  @keyframes blink{50%{opacity:0}}
   .answer{font-size:clamp(13px,min(1.7cqw,2cqh),15px);line-height:1.55;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .45s ease, transform .45s ease}
   .answer.show{opacity:1;transform:none}
   .ae p{font-size:clamp(13px,min(1.7cqw,2cqh),15px);line-height:1.55}
@@ -108,13 +108,13 @@
   .cta:hover{background:var(--ki-light);transform:translateY(-1px)}
   .cta:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
   .note{font-size:clamp(12px,1.45cqw,13px);color:var(--muted);line-height:1.5;max-width:34ch}
+
   @container (max-height:820px){ .what{display:none} }
   @container (max-height:740px){ .chips{display:none} .sub{max-width:60ch} }
   @container (max-height:700px){ .sub{display:none} }
   @container (max-width:560px){ .stage{grid-template-columns:1fr} .ae{display:none} }
   @container (max-height:500px){ .stage{display:none} }
   @media (prefers-reduced-motion:reduce){ .live-dot,.caret{animation:none} .answer{transition:none} }
-  
 </style>
 </head>
 <body>
