@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Webinar: KRC and Agent Empower, 9 October</title>
+<!--
+  ============================================================
+  FOR THE DESIGN TEAM (no coding needed)
+  1. Change only the line marked REGISTRATION LINK below.
+  2. Upload this file to the website server / CMS.
+  3. Point the right-hand panel of the login page to this file
+     (same way the current WeKonnect banner is placed).
+  The panel stretches to fill whatever space it is given.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
+
+<style>
+  :root{
+    --ki-blue:#0A5A94;      /* Konnect Insights primary */
+    --ki-deep:#073F69;      /* deeper shade for depth */
+    --ki-bright:#1673B5;    /* glow */
+    --ki-light:#F3F9FF;     /* KI light */
+    --ki-dark:#111827;      /* KI dark text */
+    --sky:#9BD0FF;          /* soft highlight on blue */
+    --muted:#B7D3EC;        /* secondary text on blue */
+    --amber:#FFC107;        /* KI accent: used only on the live dot */
+    --font:"Poppins", "Segoe UI", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--ki-deep);color:#fff;font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .panel{
+    container-type:size;position:relative;height:100%;width:100%;overflow:hidden;
+    background:
+      radial-gradient(110% 80% at 100% 0%, var(--ki-bright) 0%, transparent 60%),
+      linear-gradient(160deg, var(--ki-blue) 0%, var(--ki-deep) 100%);
+  }
+  .rings{position:absolute;right:-18cqw;bottom:-22cqh;width:70cqw;aspect-ratio:1;pointer-events:none}
+  .rings span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(155,208,255,.16)}
+  .rings span:nth-child(2){inset:12%}
+  .rings span:nth-child(3){inset:24%}
+
+  .wrap{
+    position:relative;height:100%;display:grid;grid-template-rows:auto auto 1fr auto;
+    gap:clamp(14px,3.2cqh,34px);
+    padding:clamp(22px,6cqh,64px) clamp(22px,7cqw,80px);
+  }
+
+  .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-size:clamp(12px,1.6cqw,14px);font-weight:500;color:var(--ki-light)}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:var(--amber);animation:pulse 2.4s infinite}
+  .countdown{display:flex;gap:clamp(10px,1.8cqw,18px)}
+  .countdown div{text-align:center;line-height:1}
+  .countdown b{display:block;font-size:clamp(18px,3cqw,28px);font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+  .countdown small{font-size:clamp(10px,1.3cqw,12px);color:var(--muted)}
+  .count-msg{font-size:clamp(13px,1.8cqw,16px);color:#fff;font-weight:600}
+
+  h1{
+    font-weight:700;
+    font-size:clamp(26px,min(5.6cqw,6.6cqh),66px);
+    line-height:1.08;letter-spacing:-.025em;max-width:16ch;
+  }
+  .sub{margin-top:clamp(10px,1.8cqh,18px);font-size:clamp(13px,min(1.9cqw,2.2cqh),17px);line-height:1.6;color:var(--muted);max-width:48ch}
+
+  .stage{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(12px,2.4cqw,24px);align-content:center;align-items:start}
+  .card{border-radius:16px;padding:clamp(14px,2.4cqw,24px);display:flex;flex-direction:column;gap:clamp(8px,1.4cqh,14px)}
+  .krc{background:rgba(7,40,70,.45);border:1px solid rgba(155,208,255,.28);backdrop-filter:blur(6px)}
+  .ae{background:#fff;color:var(--ki-dark);border-radius:16px 16px 16px 4px;box-shadow:0 18px 40px rgba(4,30,55,.35)}
+  .who{display:flex;align-items:center;gap:8px;font-size:clamp(12px,1.45cqw,13px);font-weight:600}
+  .krc .who{color:var(--sky)}
+  .ae .who{color:var(--ki-blue)}
+  .pip{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:700}
+  .krc .pip{background:var(--sky);color:var(--ki-deep)}
+  .ae .pip{background:var(--ki-blue);color:#fff}
+  .ask{
+    align-self:flex-end;background:var(--ki-light);color:var(--ki-dark);
+    border-radius:14px 14px 4px 14px;padding:10px 14px;
+    font-size:clamp(13px,min(1.8cqw,2.1cqh),16px);font-weight:500;max-width:92%;min-height:1.6em;
+  }
+  .caret{display:inline-block;width:2px;height:1em;background:var(--ki-blue);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+
+  .answer{font-size:clamp(13px,min(1.7cqw,2cqh),15px);line-height:1.55;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .45s ease, transform .45s ease}
+  .answer.show{opacity:1;transform:none}
+  .ae p{font-size:clamp(13px,min(1.7cqw,2cqh),15px);line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chips span{font-size:clamp(11px,1.3cqw,12px);padding:4px 10px;border-radius:999px;background:var(--ki-light);color:var(--ki-blue);font-weight:500;border:1px solid #D6E7F7}
+  .what{font-size:clamp(12px,1.4cqw,13px);line-height:1.5;color:var(--muted)}
+  .ae .what{color:#4B5B70}
+
+  .bottom{display:grid;gap:clamp(12px,2cqh,20px)}
+  .zones{display:flex;flex-wrap:wrap;gap:clamp(6px,1cqw,10px)}
+  .zone{border:1px solid rgba(155,208,255,.35);border-radius:10px;padding:6px 11px;line-height:1.25}
+  .zone b{display:block;font-weight:600;font-size:clamp(13px,1.8cqw,17px);color:#fff}
+  .zone small{font-size:clamp(10px,1.25cqw,12px);color:var(--muted)}
+  .zone.home{background:#fff;border-color:#fff}
+  .zone.home b{color:var(--ki-blue)} .zone.home small{color:#4B5B70}
+  .cta-row{display:flex;align-items:center;gap:clamp(12px,2.4cqw,24px);flex-wrap:wrap}
+  .cta{
+    display:inline-block;text-decoration:none;background:#fff;color:var(--ki-blue);
+    font-weight:600;font-size:clamp(14px,1.9cqw,17px);
+    padding:clamp(11px,1.6cqh,14px) clamp(20px,3cqw,30px);border-radius:999px;
+    box-shadow:0 10px 24px rgba(4,30,55,.3);transition:transform .15s ease, background .15s ease;
+  }
+  .cta:hover{background:var(--ki-light);transform:translateY(-1px)}
+  .cta:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+  .note{font-size:clamp(12px,1.45cqw,13px);color:var(--muted);line-height:1.5;max-width:34ch}
+  @@container (max-height:820px){ .what{display:none} }
+  @@container (max-height:740px){ .chips{display:none} .sub{max-width:60ch} }
+  @@container (max-height:700px){ .sub{display:none} }
+  @@container (max-width:560px){ .stage{grid-template-columns:1fr} .ae{display:none} }
+  @@container (max-height:500px){ .stage{display:none} }
+  @@media (prefers-reduced-motion:reduce){ .live-dot,.caret{animation:none} .answer{transition:none} }
+  
+</style>
+</head>
+<body>
+<main class="panel">
+  <div class="rings" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <div class="wrap">
+    <div class="top">
+      <span class="tag"><span class="live-dot" aria-hidden="true"></span>Live client webinar, Friday 9 October</span>
+      <div class="countdown" id="countdown" aria-live="polite"></div>
+    </div>
+
+    <header>
+      <h1>Bring your leadership. We will bring the answers.</h1>
+      <p class="sub">See KRC and Agent Empower live: the intelligence your CEO asks for, and the AI guidance your agents use on every conversation.</p>
+    </header>
+
+    <section class="stage" aria-label="Preview of what you will see">
+      <div class="card krc">
+        <div class="who"><span class="pip" aria-hidden="true">K</span>KRC, Konnect Research Cloud</div>
+        <div class="ask"><span id="q"></span><span class="caret" aria-hidden="true"></span></div>
+        <p class="answer" id="a"></p>
+        <p class="what">Your CEO, CMO and CXO ask in plain language. KRC answers from every customer conversation.</p>
+      </div>
+
+      <div class="card ae">
+        <div class="who"><span class="pip" aria-hidden="true">A</span>Agent Empower suggests</div>
+        <p>"I am sorry for the wait, Aisha. I have moved your order to priority dispatch and it will reach you tomorrow by 2 PM."</p>
+        <div class="chips"><span>Customer is frustrated</span><span>Offer priority dispatch</span><span>Brand tone checked</span></div>
+        <p class="what">Real time guidance that helps every agent reply like your best one.</p>
+      </div>
+    </section>
+
+    <footer class="bottom">
+      <div class="zones" aria-label="Webinar time in your region">
+        <div class="zone home"><b>4:00 PM</b><small>India, IST</small></div>
+        <div class="zone"><b>1:30 PM</b><small>Saudi Arabia</small></div>
+        <div class="zone"><b>2:30 PM</b><small>Dubai</small></div>
+        <div class="zone"><b>6:30 PM</b><small>Singapore</small></div>
+        <div class="zone"><b>11:30 AM</b><small>Nigeria</small></div>
+      </div>
+      <div class="cta-row">
+        <a class="cta" id="cta" href="#" target="_blank" rel="noopener">Register your team</a>
+        <p class="note">45 minutes with live demos and Q&amp;A. Open to Konnect Insights clients only.</p>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script>
+  /* ===== REGISTRATION LINK: paste the webinar link between the quotes ===== */
+  var REGISTER_URL = "https://meet.zoho.in/agax-iyv-par";
+  /* ======================================================================= */
+
+  document.getElementById("cta").href = REGISTER_URL;
+
+  // Webinar starts 9 Oct 2026, 4:00 PM IST (10:30 UTC), runs 45 minutes
+  var START = Date.UTC(2026, 9, 9, 10, 30, 0);
+  var END = START + 45 * 60 * 1000;
+  var cd = document.getElementById("countdown");
+  var cta = document.getElementById("cta");
+
+  function pad(n){ return n < 10 ? "0" + n : "" + n; }
+  function tick(){
+    var now = Date.now();
+    if (now >= END){
+      cd.innerHTML = '<span class="count-msg">Thank you for joining. Recording coming soon.</span>';
+      cta.textContent = "Request the recording";
+      return;
+    }
+    if (now >= START){
+      cd.innerHTML = '<span class="count-msg">We are live now</span>';
+      cta.textContent = "Join the webinar";
+      return;
+    }
+    var s = Math.floor((START - now) / 1000);
+    var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
+    cd.innerHTML =
+      '<div><b>' + pad(d) + '</b><small>days</small></div>' +
+      '<div><b>' + pad(h) + '</b><small>hours</small></div>' +
+      '<div><b>' + pad(m) + '</b><small>mins</small></div>';
+  }
+  tick(); setInterval(tick, 30000);
+
+  // KRC question loop (growth-first questions leadership actually asks)
+  var convo = [
+    ["What are customers saying about our new launch?",
+     "Mostly positive. Delivery speed is the top praise, packaging is the top complaint, and mentions have doubled since Tuesday."],
+    ["Where are competitors beating us on service this month?",
+     "You lead on response time. Two rivals are ahead on refund speed, mostly in Riyadh and Dubai."],
+    ["Which customers are ready to upgrade?",
+     "312 customers asked about premium plans this week. 40 of them are high value accounts."],
+    ["Is a PR issue building right now?",
+     "Early signal found. Complaints about one store tripled in six hours. Your brand team has been alerted."]
+  ];
+  var qEl = document.getElementById("q"), aEl = document.getElementById("a");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var i = 0;
+
+  function play(){
+    var pair = convo[i % convo.length];
+    aEl.classList.remove("show");
+    if (reduce){
+      qEl.textContent = pair[0]; aEl.textContent = pair[1]; aEl.classList.add("show");
+      i++; setTimeout(play, 7000); return;
+    }
+    qEl.textContent = "";
+    var c = 0;
+    var typer = setInterval(function(){
+      qEl.textContent = pair[0].slice(0, ++c);
+      if (c >= pair[0].length){
+        clearInterval(typer);
+        setTimeout(function(){ aEl.textContent = pair[1]; aEl.classList.add("show"); }, 500);
+        i++; setTimeout(play, 6500);
+      }
+    }, 38);
+  }
+  play();
+</script>
+</body>
+</html>
