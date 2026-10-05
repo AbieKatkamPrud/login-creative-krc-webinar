@@ -108,12 +108,12 @@
   .cta:hover{background:var(--ki-light);transform:translateY(-1px)}
   .cta:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
   .note{font-size:clamp(12px,1.45cqw,13px);color:var(--muted);line-height:1.5;max-width:34ch}
-  @@container (max-height:820px){ .what{display:none} }
-  @@container (max-height:740px){ .chips{display:none} .sub{max-width:60ch} }
-  @@container (max-height:700px){ .sub{display:none} }
-  @@container (max-width:560px){ .stage{grid-template-columns:1fr} .ae{display:none} }
-  @@container (max-height:500px){ .stage{display:none} }
-  @@media (prefers-reduced-motion:reduce){ .live-dot,.caret{animation:none} .answer{transition:none} }
+  @container (max-height:820px){ .what{display:none} }
+  @container (max-height:740px){ .chips{display:none} .sub{max-width:60ch} }
+  @container (max-height:700px){ .sub{display:none} }
+  @container (max-width:560px){ .stage{grid-template-columns:1fr} .ae{display:none} }
+  @container (max-height:500px){ .stage{display:none} }
+  @media (prefers-reduced-motion:reduce){ .live-dot,.caret{animation:none} .answer{transition:none} }
   
 </style>
 </head>
